@@ -5,41 +5,41 @@ using namespace std;
 #include <assert.h>
 #include "Parser.h"
 
-#include "MovieDB.h"
+// #include "MovieDB.h"
 #include "ActorDB.h"
-MovieDB moviedb;
+// MovieDB moviedb;
 ActorDB actordb;
 
-void do_add_movie(int movie_id, int year, string dir_last, string dir_first, 
-	       string title) {
-	/*
-	cout << "do_add_movie()" << endl; 
-	cout << "   movie_id: " << movie_id << endl; 
-	cout << "       year: " << year << endl; 
-	cout << "   dir_last: " << dir_last << endl; 
-	cout << "  dir_first: " << dir_first << endl; 
-	cout << "      title: " << title << endl; 
-	*/
-	Movie m(movie_id, year, title, dir_last, dir_first);
-	if (moviedb.addMovie(m)) 
-		cout << "add_movie: Added " << m.getTitle() << " (" <<
-		       m.getYear() << ") directed by " << 
-	       	       m.getDirector() << endl;
-	else
-		cout << "add_movie: Error movie id " << m.getID() << 
-			" already in use" << endl;
-	return;
-}
+// void do_add_movie(int movie_id, int year, string dir_last, string dir_first, 
+// 	       string title) {
+// 	/*
+// 	cout << "do_add_movie()" << endl; 
+// 	cout << "   movie_id: " << movie_id << endl; 
+// 	cout << "       year: " << year << endl; 
+// 	cout << "   dir_last: " << dir_last << endl; 
+// 	cout << "  dir_first: " << dir_first << endl; 
+// 	cout << "      title: " << title << endl; 
+// 	*/
+// 	Movie m(movie_id, year, title, dir_last, dir_first);
+// 	if (moviedb.addMovie(m)) 
+// 		cout << "add_movie: Added " << m.getTitle() << " (" <<
+// 		       m.getYear() << ") directed by " << 
+// 	       	       m.getDirector() << endl;
+// 	else
+// 		cout << "add_movie: Error movie id " << m.getID() << 
+// 			" already in use" << endl;
+// 	return;
+// }
 
-void do_remove_movie(int movie_id) {
-	string title = moviedb.getTitle(movie_id); 
-	if (moviedb.removeMovie(movie_id))
-		cout << "remove_movie: Removed " << title << endl;
-	else
-		cout << "remove_movie: Error movie id " << movie_id << 
-			" does not exist" << endl;
-	return;
-}
+// void do_remove_movie(int movie_id) {
+// 	string title = moviedb.getTitle(movie_id); 
+// 	if (moviedb.removeMovie(movie_id))
+// 		cout << "remove_movie: Removed " << title << endl;
+// 	else
+// 		cout << "remove_movie: Error movie id " << movie_id << 
+// 			" does not exist" << endl;
+// 	return;
+// }
 
 void do_register_actor(int actor_id, string actor_last, string actor_first) {
 	/*
@@ -58,47 +58,47 @@ void do_register_actor(int actor_id, string actor_last, string actor_first) {
 	return;
 }
 
-void do_join_cast(int actor_id, int movie_id) {
-	/*
-	cout << "do_join_cast()" << endl; 
-	cout << "   actor_id: " << actor_id << endl; 
-	cout << "   movie_id: " << movie_id << endl; 
-	*/
-	if (!moviedb.find(movie_id)) {
-		cout << "join_cast: Error movie id " << movie_id <<
-			" does not exist" << endl;
-		return;
-	}
-	if (!actordb.find(actor_id)) {
-		cout << "join_cast: Error actor id " << actor_id <<
-			" does not exist" << endl;
-		return;
-	}
-	if (!moviedb.addActor(movie_id, actor_id)) {
-		cout << "join_cast: Error " << actordb.getName(actor_id) << 
-		" is already in the cast of " << moviedb.getTitle(movie_id) << 
-		endl;
-	}
-	else {
-		cout << "join_cast: Added actor " << 
-		actordb.getName(actor_id) << " to the cast of " << 
-		moviedb.getTitle(movie_id) << endl;
-	}
-	return;
-}
+// void do_join_cast(int actor_id, int movie_id) {
+// 	/*
+// 	cout << "do_join_cast()" << endl; 
+// 	cout << "   actor_id: " << actor_id << endl; 
+// 	cout << "   movie_id: " << movie_id << endl; 
+// 	*/
+// 	if (!moviedb.find(movie_id)) {
+// 		cout << "join_cast: Error movie id " << movie_id <<
+// 			" does not exist" << endl;
+// 		return;
+// 	}
+// 	if (!actordb.find(actor_id)) {
+// 		cout << "join_cast: Error actor id " << actor_id <<
+// 			" does not exist" << endl;
+// 		return;
+// 	}
+// 	if (!moviedb.addActor(movie_id, actor_id)) {
+// 		cout << "join_cast: Error " << actordb.getName(actor_id) << 
+// 		" is already in the cast of " << moviedb.getTitle(movie_id) << 
+// 		endl;
+// 	}
+// 	else {
+// 		cout << "join_cast: Added actor " << 
+// 		actordb.getName(actor_id) << " to the cast of " << 
+// 		moviedb.getTitle(movie_id) << endl;
+// 	}
+// 	return;
+// }
 
-void do_cast(int movie_id) {
-	/*
-	cout << "do_cast()" << endl; 
-	cout << "   movie_id: " << movie_id << endl; 
-	*/
-	if (!moviedb.find(movie_id)) {
-		cout << "cast: Error movie id " << movie_id <<
-			" does not exist" << endl;
-		return;
-	}
-	moviedb.showMovie(movie_id, actordb);
-}
+// void do_cast(int movie_id) {
+// 	/*
+// 	cout << "do_cast()" << endl; 
+// 	cout << "   movie_id: " << movie_id << endl; 
+// 	*/
+// 	if (!moviedb.find(movie_id)) {
+// 		cout << "cast: Error movie id " << movie_id <<
+// 			" does not exist" << endl;
+// 		return;
+// 	}
+// 	moviedb.showMovie(movie_id, actordb);
+// }
 
 /*
 void do_career(int actor_id) {
@@ -169,25 +169,25 @@ bool accept_commands(istream &is, bool silent=false, bool echo=false) {
          return true;
       }
 
-      else if (p.getOperation() == "add_movie") {
-         if (!expected(p, 5))  
-            continue;
-	 if (!assertInt(p, 1))
-            continue;
-	 if (!assertInt(p, 2))
-            continue;
-         int movie_id = stoi(p.getArg(1));
-         int year = stoi(p.getArg(2));
-         do_add_movie(movie_id, year, p.getArg(3), p.getArg(4), p.getArg(5));
-      }
-      else if (p.getOperation() == "remove_movie") {
-         if (!expected(p, 1))  
-            continue;
-	 if (!assertInt(p, 1))
-            continue;
-         int movie_id = stoi(p.getArg(1)); 
-         do_remove_movie(movie_id);
-      }
+    //   else if (p.getOperation() == "add_movie") {
+    //      if (!expected(p, 5))  
+    //         continue;
+	//  if (!assertInt(p, 1))
+    //         continue;
+	//  if (!assertInt(p, 2))
+    //         continue;
+    //      int movie_id = stoi(p.getArg(1));
+    //      int year = stoi(p.getArg(2));
+    //      do_add_movie(movie_id, year, p.getArg(3), p.getArg(4), p.getArg(5));
+    //   }
+    //   else if (p.getOperation() == "remove_movie") {
+    //      if (!expected(p, 1))  
+    //         continue;
+	//  if (!assertInt(p, 1))
+    //         continue;
+    //      int movie_id = stoi(p.getArg(1)); 
+    //      do_remove_movie(movie_id);
+    //   }
       else if (p.getOperation() == "register_actor") {
          if (!expected(p, 3))  
             continue;
@@ -196,25 +196,25 @@ bool accept_commands(istream &is, bool silent=false, bool echo=false) {
          int actor_id = stoi(p.getArg(1));
          do_register_actor(actor_id, p.getArg(2), p.getArg(3));
       }
-      else if (p.getOperation() == "join_cast") {
-         if (!expected(p, 2))  
-            continue;
-	 if (!assertInt(p, 1))
-            continue;
-	 if (!assertInt(p, 2))
-            continue;
-         int actor_id = stoi(p.getArg(1));
-         int movie_id = stoi(p.getArg(2));
-         do_join_cast(actor_id, movie_id);
-      }
-      else if (p.getOperation() == "cast") {
-         if (!expected(p, 1))  
-            continue;
-	 if (!assertInt(p, 1))
-            continue;
-         int movie_id = stoi(p.getArg(1)); 
-         do_cast(movie_id);
-      }
+    //   else if (p.getOperation() == "join_cast") {
+    //      if (!expected(p, 2))  
+    //         continue;
+	//  if (!assertInt(p, 1))
+    //         continue;
+	//  if (!assertInt(p, 2))
+    //         continue;
+    //      int actor_id = stoi(p.getArg(1));
+    //      int movie_id = stoi(p.getArg(2));
+    //      do_join_cast(actor_id, movie_id);
+    //   }
+    //   else if (p.getOperation() == "cast") {
+    //      if (!expected(p, 1))  
+    //         continue;
+	//  if (!assertInt(p, 1))
+    //         continue;
+    //      int movie_id = stoi(p.getArg(1)); 
+    //      do_cast(movie_id);
+    //   }
       /*
       else if (p.getOperation() == "career") {
          if (!expected(p, 1))  
@@ -235,6 +235,6 @@ bool accept_commands(istream &is, bool silent=false, bool echo=false) {
 
 int main()
 {
-  accept_commands(cin, false, false);
+  accept_commands(cin, true, false);
   return 0;
 }
