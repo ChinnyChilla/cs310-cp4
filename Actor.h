@@ -12,11 +12,12 @@ class Actor {
 		unsigned int actor_id;
 		string last;
 		string first;
-		vector<unsigned int> movies;		
+		int praise_points;
+		bool already_praised = false;	
 	public:
 		Actor();
 		Actor(unsigned int act_id, string last, string first); 
-		bool addMovie(const unsigned int movie_id);
+		// bool addMovie(const unsigned int movie_id);
 		//void showCareer(const MovieDB &moviedb) const;
 
 		string getName() const { 

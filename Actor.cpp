@@ -4,12 +4,16 @@ Actor::Actor() {
 	first = "";
 	last = "";
 	actor_id = 0;
+	priase_points = 0;
+	already_priased = false;
 }
 
 Actor::Actor(unsigned int act_id, string lname, string fname) {
 	first = fname;
 	last = lname;
 	actor_id = act_id;
+	praise_points = 0;
+	already_praised = false;
 }
 
 bool Actor::addMovie(const unsigned int movieid) {
