@@ -137,11 +137,15 @@ bool accept_commands(istream &is, bool silent=false, bool echo=false) {
       if (!silent) {
          cout << endl << "Enter a command: " << endl;
          cout << "Choose from " << endl <<
-            "   add_movie <movieid> <year> <dirlast> <dirfirst> <title>" << endl <<
-            "   remove_movie <movieid>" << endl << 
+       //     "   add_movie <movieid> <year> <dirlast> <dirfirst> <title>" << endl <<
+       //     "   remove_movie <movieid>" << endl << 
 	    "   register_actor <actorid> <last> <first>" << endl << 
-	    "   join_cast <actorid> <movieid>" << endl << 
-	    "   cast <movieid>" << endl << 
+	   // "   join_cast <actorid> <movieid>" << endl << 
+	   // "   cast <movieid>" << endl <<
+       "   remove_actor <actorid>" << endl <<
+       "   praise_actor <last-name> <praise-points>" << endl <<
+       "   award_actor <last-name>" << endl <<
+       "   show_priase" << endl <<
 	    // "   career <actorid>" << endl << 
             "   quit" << endl; 
          cout << ": ";
