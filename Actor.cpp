@@ -4,8 +4,8 @@ Actor::Actor() {
 	first = "";
 	last = "";
 	actor_id = 0;
-	priase_points = 0;
-	already_priased = false;
+	praise_points = 0;
+	already_praised = false;
 }
 
 Actor::Actor(unsigned int act_id, string lname, string fname) {
@@ -16,14 +16,14 @@ Actor::Actor(unsigned int act_id, string lname, string fname) {
 	already_praised = false;
 }
 
-bool Actor::addMovie(const unsigned int movieid) {
-	for (unsigned int i = 0; i < movies.size(); i++) {
-		if (movies[i] == movieid)
-			return false;
-	}
-	movies.push_back(movieid);
-	return true;
-}
+// bool Actor::addMovie(const unsigned int movieid) {
+// 	for (unsigned int i = 0; i < movies.size(); i++) {
+// 		if (movies[i] == movieid)
+// 			return false;
+// 	}
+// 	movies.push_back(movieid);
+// 	return true;
+// }
 
 /*
 void Actor::showCareer(const MovieDB &moviedb) const {

@@ -2,7 +2,7 @@
 
 ActorHeap::ActorHeap()
 {
-	arr = new Actor[2];
+	arr = new Actor*[2];
 	maxSize = 2;
 	count = 0;
 }
@@ -12,7 +12,7 @@ ActorHeap::~ActorHeap() {
 }
 void ActorHeap::grow()
 {
-	Actor* newArray = new Actor[maxSize * 2];
+	Actor** newArray = new Actor*[maxSize * 2];
 	for (unsigned int i=0; i < maxSize; i++) {
 		newArray[i] = arr[i];
 	}
@@ -40,7 +40,7 @@ Actor* ActorHeap::extractMax() {
 void ActorHeap::swap(unsigned int left, unsigned int right) {
 	Actor* temp = arr[left];
 	arr[left] = arr[right];
-	arr[right] = arr[left];
+	arr[right] = temp;
 	return;
 }
 
@@ -52,7 +52,7 @@ void ActorHeap::mergeUp(unsigned int index) {
 		} else {
 			parentIndex = (index - 1) / 2;
 		}
-		if (arr[index]->priase_points > arr[parentIndex]->priase_points) {
+		if (arr[index]->praise_points > arr[parentIndex]->praise_points) {
 				swap(index, parentIndex);
 				index = parentIndex;
 		} else {break;}
@@ -61,18 +61,18 @@ void ActorHeap::mergeUp(unsigned int index) {
 }
 
 void ActorHeap::mergeDown(unsigned int index) {
-	int largestIndex;
-	int leftChildIndex;
-	int rightChildIndex;
+	unsigned int largestIndex;
+	unsigned int leftChildIndex;
+	unsigned int rightChildIndex;
 	while (index < count) {
 		largestIndex = index;
 		leftChildIndex = (index * 2) + 1;
 		rightChildIndex = (index * 2) + 2;
 
-		if (arr[leftChildIndex] > arr[largestIndex]) {
+		if (arr[leftChildIndex]->praise_points > arr[largestIndex]->praise_points) {
 			largestIndex = leftChildIndex;
 		}
-		if (arr[rightChildIndex] > arr[largestIndex]) {
+		if (arr[rightChildIndex]->praise_points > arr[largestIndex]->praise_points) {
 			largestIndex = rightChildIndex;
 		}
 		if (largestIndex != index) {

@@ -12,8 +12,7 @@ class Actor {
 		unsigned int actor_id;
 		string last;
 		string first;
-		int praise_points;
-		bool already_praised = false;	
+		
 	public:
 		Actor();
 		Actor(unsigned int act_id, string last, string first); 
@@ -24,6 +23,8 @@ class Actor {
 			return first + " " + last;
 		}
 		unsigned int getID() const { return actor_id; }
+		int praise_points;
+		bool already_praised = false;	
 };
 
 #endif
