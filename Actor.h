@@ -24,7 +24,8 @@ class Actor {
 		}
 		unsigned int getID() const { return actor_id; }
 		int praise_points;
-		bool already_praised = false;	
+		bool already_praised = false;
+		int heap_position;
 };
 
 #endif

@@ -6,6 +6,7 @@ Actor::Actor() {
 	actor_id = 0;
 	praise_points = 0;
 	already_praised = false;
+	heap_position = -1;
 }
 
 Actor::Actor(unsigned int act_id, string lname, string fname) {
@@ -14,6 +15,7 @@ Actor::Actor(unsigned int act_id, string lname, string fname) {
 	actor_id = act_id;
 	praise_points = 0;
 	already_praised = false;
+	heap_position = -1;
 }
 
 // bool Actor::addMovie(const unsigned int movieid) {

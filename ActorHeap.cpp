@@ -25,6 +25,7 @@ void ActorHeap::insert(Actor* actor)
 {
 	if (count == maxSize) grow();
 	arr[count] = actor;
+	actor->heap_position = count;
 	mergeUp(count);
 	count++;
 	return;
@@ -33,6 +34,7 @@ void ActorHeap::insert(Actor* actor)
 Actor* ActorHeap::extractMax() {
 	Actor* toReturn = arr[0];
 	arr[0] = arr[count-1];
+	arr[0]->heap_position = 0;
 	mergeDown(0);
 	// Potentially add already_priased logic here?
 	return toReturn;
@@ -41,6 +43,10 @@ void ActorHeap::swap(unsigned int left, unsigned int right) {
 	Actor* temp = arr[left];
 	arr[left] = arr[right];
 	arr[right] = temp;
+
+	// update index positions
+	arr[left]->heap_position = left;
+	arr[right]->heap_position = right;
 	return;
 }
 
