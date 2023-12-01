@@ -41,20 +41,27 @@ ActorDB actordb;
 // 	return;
 // }
 
-void do_register_actor(int actor_id, string actor_last, string actor_first) {
+void do_register_actor(unsigned int actor_id, string actor_last, string actor_first) {
 	/*
 	cout << "do_register_actor()" << endl;
 	cout << "   actor_id: " << actor_id << endl; 
 	cout << " actor_last: " << actor_last << endl; 
 	cout << "actor_first: " << actor_first << endl; 
 	*/
-	Actor* a = new Actor(actor_id, actor_last, actor_first);
-	if (actordb.addActor(a)) 
-		cout << "register_actor: Registered actor " << 
-			a->getName() << endl;
-	else
-		cout << "register_actor: Error actor id " << actor_id << 
-			" already in use" << endl;
+	actordb.addActor(actor_id, actor_last, actor_first);
+	return;
+}
+
+void do_praise_actor(string last, int amount) {
+	actordb.praise_actor(last, amount);
+	return;
+}
+void do_award_actor() {
+	actordb.award_actor();
+	return;
+}
+void do_show_praise() {
+	actordb.show_praise();
 	return;
 }
 
@@ -200,7 +207,22 @@ bool accept_commands(istream &is, bool silent=false, bool echo=false) {
          int actor_id = stoi(p.getArg(1));
          do_register_actor(actor_id, p.getArg(2), p.getArg(3));
       }
-    //   else if (p.getOperation() == "join_cast") {
+	  else if (p.getOperation() == "praise_actor")
+	  {
+		  if (!expected(p, 2))
+			  continue;
+		  if (!assertInt(p, 2))
+			  continue;
+		  int amount = stoi(p.getArg(2));
+		  do_praise_actor(p.getArg(1), amount);
+	  } else if (p.getOperation() == "award_actor") {
+		do_award_actor();
+	  }
+	  else if (p.getOperation() == "show_praise")
+	  {
+		  do_show_praise();
+	  }
+	//   else if (p.getOperation() == "join_cast") {
     //      if (!expected(p, 2))  
     //         continue;
 	//  if (!assertInt(p, 1))

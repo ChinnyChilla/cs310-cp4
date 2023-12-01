@@ -1,12 +1,55 @@
 #include "ActorDB.h"
-
+// #include "Array.h"
+// #include "ActorBST.h"
+// #include "ActorHeap.h"
 
 ActorDB::ActorDB() {
 	actors = new Array<Actor*>();
-	actorBST = ActorBST();
-	actorHeap = ActorHeap();
+	actorBST = new ActorBST();
+	actorHeap = new ActorHeap();
 
 }
+
+int ActorDB::binarySearchActor(int target, int left, int right)
+{
+	if (right == -1)
+		return -1;
+	while (left <= right)
+	{
+		int middle = (left + right) / 2;
+		int middle_id = actors->at(middle)->getID();
+		if (middle_id == target)
+			return middle;
+
+		if (middle_id < target)
+		{
+			left = middle + 1;
+			continue;
+		}
+		right = middle - 1;
+	};
+	return -1;
+};
+
+int ActorDB::findInsertLocationActor(int target, int left, int right)
+{
+	if (right == -1)
+		return 0;
+	while (left <= right)
+	{
+		int middle = (left + right) / 2;
+		int middle_id = actors->at(middle)->getID();
+		if (middle_id == target)
+			return middle;
+		if (middle_id < target)
+		{
+			left = middle + 1;
+			continue;
+		}
+		right = middle - 1;
+	};
+	return right + 1;
+};
 
 // bool ActorDB::find(unsigned int actorid) const {
 // 	for (unsigned int i = 0; i < actors->count; i++) {
@@ -24,38 +67,62 @@ ActorDB::ActorDB() {
 // 	return "EMPTY";
 // }
 
-bool ActorDB::addActor(Actor* actor) {
-	for (unsigned int i = 0; i < actors->count; i++) {
-		if (actors->at(i)->getID() == actor->getID())
-			return false;
+bool ActorDB::addActor(unsigned int actorid, string last, string first) {
+		
+	Actor* actor = new Actor(actorid, last, first);
+	
+	int location = binarySearchActor(actorid, 0, actors->count - 1);
+	if (location != -1) {
+		cout << "register_actor: Error actor id " << actorid << " already in use" << endl;
+		return false;
 	}
-	for (unsigned int i=0; i<actors->count; i++) {
-		if (actors->at(i)->getID() > actor->getID()) {
-			actors->insert(i, actor);
-			break;
-		}
-	}
-	actorBST.insert(actor);
-	actorHeap.insert(actor);
+	int insertLocation = findInsertLocationActor(actorid, 0 , actors->count - 1);
+	cout << "register_actor: Registered actor " << actor->getName() << endl;
+	actors->insert(insertLocation, actor);
+	
+	actorBST->insert(actor);
+	actorHeap->insert(actor);
 	return true;
 }
 
 void ActorDB::praise_actor(string last, unsigned int points) {
-	Actor* actor = actorBST.search(last);
+	Actor* actor = actorBST->search(last);
 	if (actor == nullptr) {
 		cout << "Actor " << last << " not found" << endl;
 		return;
 	}
 	if (actor->already_praised) {
-		cout << "Actor " << last << " already praised" << endl;
+		cout << "That's nice but " << actor->first << " " << actor->last << " has already recieved the award" << endl;
 		return;
 	}
 	actor->praise_points += points;
 	cout << "Awarding actor " << actor->first << " " << actor->last << " " << points << " praise points" << endl;
-	actorHeap.fixHeap(actor->heap_position);
+	actorHeap->fixHeap(actor->heap_position);
+	return;
+};
+
+void ActorDB::award_actor() {
+	cout << "before extract max" << endl;
+	Actor* actor = actorHeap->extractMax();
+	cout << "done" << endl;
+	if (actor == nullptr) {
+		cout << "No actors to award" << endl;
+		return;
+	}
+	cout << "Actor " << actor->first << " " << actor->last << " presnted with the Lifetime Achievement Award (" << actor->praise_points << " praise points)" << endl;
+	actor->already_praised = true;
+
+	
 	return;
 }
-/*
+
+void ActorDB::show_praise() {
+	for (unsigned int i=0; i<actors->count; i++) {
+		cout << actors->at(i)->getID() << " " << actors->at(i)->getName() << " has " << actors->at(i)->praise_points << " praise points" << endl;
+	}
+	return;
+}
+ /*
 void ActorDB::showCareer(unsigned int actorid) const {
 	for (unsigned int i = 0; i < actors.size(); i++) {
 		if (actors[i].getID() == actorid) {

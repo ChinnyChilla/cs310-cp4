@@ -32,12 +32,17 @@ void ActorHeap::insert(Actor* actor)
 }
 
 Actor* ActorHeap::extractMax() {
+	if (count == 0) {return nullptr;}
 	Actor* toReturn = arr[0];
 	arr[0] = arr[count-1];
 	arr[0]->heap_position = 0;
-	mergeDown(0);
-	// Potentially add already_priased logic here?
-	return toReturn;
+	count--;
+	if (count == 1) {
+		return toReturn;
+	} else {
+		mergeDown(0);
+		return toReturn;
+	};
 }
 void ActorHeap::swap(unsigned int left, unsigned int right) {
 	Actor* temp = arr[left];
@@ -75,10 +80,12 @@ void ActorHeap::mergeDown(unsigned int index) {
 		leftChildIndex = (index * 2) + 1;
 		rightChildIndex = (index * 2) + 2;
 
-		if (arr[leftChildIndex]->praise_points > arr[largestIndex]->praise_points) {
+		if (leftChildIndex<count && arr[leftChildIndex]->praise_points> arr[largestIndex]->praise_points)
+		{
 			largestIndex = leftChildIndex;
 		}
-		if (arr[rightChildIndex]->praise_points > arr[largestIndex]->praise_points) {
+		if (rightChildIndex<count && arr[rightChildIndex]->praise_points> arr[largestIndex]->praise_points)
+		{
 			largestIndex = rightChildIndex;
 		}
 		if (largestIndex != index) {

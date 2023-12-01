@@ -5,7 +5,7 @@ template <typename ArrayType>
 class Array {
 	public:
 		Array();
-		Array(ArrayType items);
+		// Array(ArrayType items);
 		~Array();
 
 		void grow();

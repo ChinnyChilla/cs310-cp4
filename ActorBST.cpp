@@ -4,6 +4,7 @@ ActorBST::ActorBST() {
 	root = nullptr;
 };
 
+ActorBST::~ActorBST() {};
 // insert a node into the BST sorted by last name
 void ActorBST::insert(Actor* actor) {
 	ActorNode* newNode = new ActorNode(actor);
@@ -13,7 +14,7 @@ void ActorBST::insert(Actor* actor) {
 	}
 	ActorNode* curr = root;
 	while (curr != nullptr) {
-		if (curr->actor->last.compare(curr->actor->last) < 0) {
+		if (curr->actor->last < newNode->actor->last) {
 			if (curr->left == nullptr) {
 				curr->left = newNode;
 				return;
@@ -31,9 +32,9 @@ void ActorBST::insert(Actor* actor) {
 Actor* ActorBST::search(string name) {
 	ActorNode* curr = root;
 	while (curr != nullptr) {
-		if (curr->actor->last.compare(name) == 0) {
+		if (curr->actor->last == name) {
 			return curr->actor;
-		} else if (curr->actor->last.compare(name) < 0) {
+		} else if (curr->actor->last < name) {
 			curr = curr->left;
 		} else {
 			curr = curr->right;

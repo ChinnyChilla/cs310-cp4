@@ -7,7 +7,6 @@ Array<ArrayType>::Array()
 	arr = new ArrayType[2];
 	maxSize = 2;
 	count = 0;
-	
 }
 
 template <typename ArrayType>
@@ -15,13 +14,13 @@ Array<ArrayType>::~Array() {
 	delete[] arr;
 }
 
-template <typename ArrayType>
-Array<ArrayType>::Array(ArrayType items)
-{
-	arr = new ArrayType[2];
-	maxSize = 2;
-	count = 0;
-}
+// template <typename ArrayType>
+// Array<ArrayType>::Array(ArrayType items)
+// {
+// 	arr = new ArrayType[2];
+// 	maxSize = 2;
+// 	count = 0;
+// }
 template <typename ArrayType>
 void Array<ArrayType>::grow()
 {
