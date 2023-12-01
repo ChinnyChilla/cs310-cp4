@@ -90,3 +90,7 @@ void ActorHeap::mergeDown(unsigned int index) {
 	}
 	return;
 }
+void ActorHeap::fixHeap(unsigned int index) {
+	mergeUp(index);
+	return;
+}

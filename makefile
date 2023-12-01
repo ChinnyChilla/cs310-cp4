@@ -18,13 +18,13 @@ OBJ = obj
 
 all: $(BIN)/$(EXE)
 
-$(BIN)/$(EXE): $(OBJ)/movie_db.o $(OBJ)/ActorDB.o $(OBJ)/Actor.o $(OBJ)/ActorHeap.o
-	$(CC) $(FLAGS) $(OBJ)/movie_db.o $(OBJ)/ActorDB.o $(OBJ)/Actor.o $(OBJ)/ActorHeap.o -o $@
+$(BIN)/$(EXE): $(OBJ)/movie_db.o $(OBJ)/ActorDB.o $(OBJ)/Actor.o $(OBJ)/ActorHeap.o $(OBJ)/ActorBST.o $(OBJ)/Array.o
+	$(CC) $(FLAGS) $(OBJ)/movie_db.o $(OBJ)/ActorDB.o $(OBJ)/Actor.o $(OBJ)/ActorHeap.o $(OBJ)/ActorBST.o $(OBJ)/Array.o -o $@
 
 $(OBJ)/movie_db.o: movie_db.cpp Parser.h
 	$(CC) $(FLAGS) -c movie_db.cpp -o $@
 
-$(OBJ)/ActorDB.o: ActorDB.cpp ActorDB.h
+$(OBJ)/ActorDB.o: ActorDB.cpp ActorDB.h Actor.h ActorHeap.h ActorBST.h Array.h
 	$(CC) $(FLAGS) -c ActorDB.cpp -o $@
 
 
@@ -34,8 +34,14 @@ $(OBJ)/ActorDB.o: ActorDB.cpp ActorDB.h
 $(OBJ)/Actor.o: Actor.cpp Actor.h
 	$(CC) $(FLAGS) -c Actor.cpp -o $@
 	
-$(OBJ)/ActorHeap.o: ActorHeap.cpp ActorHeap.h
+$(OBJ)/ActorHeap.o: ActorHeap.cpp ActorHeap.h Actor.h
 	$(CC) $(FLAGS) -c ActorHeap.cpp -o $@
+
+$(OBJ)/ActorBST.o: ActorBST.cpp ActorBST.h Actor.h
+	$(CC) $(FLAGS) -c ActorBST.cpp -o $@
+
+$(OBJ)/Array.o: Array.cpp Array.h
+	$(CC) $(FLAGS) -c Array.cpp -o $@
 tar:	clean
 	tar cvvf $(TARFILE) $(REPODIR)
 	gzip $(TARFILE)

@@ -48,10 +48,10 @@ void do_register_actor(int actor_id, string actor_last, string actor_first) {
 	cout << " actor_last: " << actor_last << endl; 
 	cout << "actor_first: " << actor_first << endl; 
 	*/
-	Actor a(actor_id, actor_last, actor_first);
+	Actor* a = new Actor(actor_id, actor_last, actor_first);
 	if (actordb.addActor(a)) 
 		cout << "register_actor: Registered actor " << 
-			a.getName() << endl;
+			a->getName() << endl;
 	else
 		cout << "register_actor: Error actor id " << actor_id << 
 			" already in use" << endl;

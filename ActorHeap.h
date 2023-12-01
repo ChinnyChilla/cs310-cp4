@@ -6,6 +6,7 @@ class ActorHeap {
 		~ActorHeap();
 		void insert(Actor* actor);
 		void remove(Actor* actor);
+		void fixHeap(unsigned int index);
 		Actor* extractMax();
 		Actor** arr;
 		unsigned int count;

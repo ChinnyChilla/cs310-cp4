@@ -8,11 +8,6 @@ using namespace std;
 //#include "MovieDB.h"
 
 class Actor {
-	private:
-		unsigned int actor_id;
-		string last;
-		string first;
-		
 	public:
 		Actor();
 		Actor(unsigned int act_id, string last, string first); 
@@ -24,8 +19,11 @@ class Actor {
 		}
 		unsigned int getID() const { return actor_id; }
 		int praise_points;
-		bool already_praised = false;
+		bool already_praised;
 		int heap_position;
+		unsigned int actor_id;
+		string last;
+		string first;
 };
 
 #endif
