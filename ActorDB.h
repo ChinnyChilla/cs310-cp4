@@ -1,21 +1,31 @@
-#ifndef __ACTORDB_H_
-#define __ACTORDB_H_
+#ifndef __ACTOR_H_
+#define __ACTOR_H_
 
 #include <iostream>
+#include "Array.h"
 using namespace std;
 
-#include <vector>
-#include "Actor.h"
 
-class ActorDB {
+
+
+class Actor {
 	private:
-		vector<Actor> actors;		
+		unsigned int actor_id;
+		string last;
+		string first;
 	public:
-		ActorDB();
-		bool find(unsigned int actorid) const;
-		string getName(unsigned int actorid) const;
-		bool addActor(const Actor &actor);
-		//void showCareer(unsigned int actorid) const;
+		Actor();
+		Actor(unsigned int act_id, string last, string first); 
+     bool operator==(const Actor& other);
+     bool operator!=(const Actor& other);
+		string getName() const { 
+			return first + " " + last;
+		}
+		unsigned int getID() const { return actor_id; }
+	      string getLastName() const{
+	                 return last;
+                }
+
 };
 
 #endif
