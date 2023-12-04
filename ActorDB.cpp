@@ -1,10 +1,11 @@
 #include "ActorDB.h"
+#include "Array.h"
 
 ActorDB::ActorDB() {
 }
 
 bool ActorDB::find(unsigned int actorid) const {
-	for (unsigned int i = 0; i < actors.size(); i++) {
+	for (unsigned int i = 0; i < actors.getSize(); i++) {
 		if (actors[i].getID() == actorid)
 			return true;
 	}
@@ -12,7 +13,7 @@ bool ActorDB::find(unsigned int actorid) const {
 }
 
 string ActorDB::getName(unsigned int actorid) const {
-	for (unsigned int i = 0; i < actors.size(); i++) {
+	for (unsigned int i = 0; i < actors.getSize(); i++) {
 		if (actors[i].getID() == actorid)
 			return actors[i].getName();
 	}
@@ -20,7 +21,7 @@ string ActorDB::getName(unsigned int actorid) const {
 }
 
 bool ActorDB::addActor(const Actor &actor) {
-	for (unsigned int i = 0; i < actors.size(); i++) {
+	for (unsigned int i = 0; i < actors.getSize(); i++) {
 		if (actors[i].getID() == actor.getID())
 			return false;
 	}
@@ -28,17 +29,9 @@ bool ActorDB::addActor(const Actor &actor) {
 	return true;
 }
 
-/*
-void ActorDB::showCareer(unsigned int actorid) const {
-	for (unsigned int i = 0; i < actors.size(); i++) {
-		if (actors[i].getID() == actorid) {
-			cout << actors[i].getName << " has acted in:" << 
-				endl;
-			break;
-	}
-	if (i < actors.size())
-		actors[i].showCareer();
-	else 
-		cout << "actor id " << actorid << " not found" << endl;
+void ActorDB::registerActor(const Actor& actor) {
+    actors.add(actor); 
+    int index = actor.getID(); 
+    Index.insert(actor.getLastName(), index);
 }
-*/
+
