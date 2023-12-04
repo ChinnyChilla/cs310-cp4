@@ -1,31 +1,24 @@
-#ifndef __ACTOR_H_
-#define __ACTOR_H_
+#ifndef __ACTORDB_H_
+#define __ACTORDB_H_
 
 #include <iostream>
-#include "Array.h"
 using namespace std;
 
+#include "Actor.h"
+#include "Array.h"
+#include "BST.h"
 
-
-
-class Actor {
+class ActorDB {
 	private:
-		unsigned int actor_id;
-		string last;
-		string first;
+		GrowableArray<Actor> actors;
+		BST Index;
 	public:
-		Actor();
-		Actor(unsigned int act_id, string last, string first); 
-     bool operator==(const Actor& other);
-     bool operator!=(const Actor& other);
-		string getName() const { 
-			return first + " " + last;
-		}
-		unsigned int getID() const { return actor_id; }
-	      string getLastName() const{
-	                 return last;
-                }
-
+		ActorDB();
+		bool find(unsigned int actorid) const;
+		string getName(unsigned int actorid) const;
+		bool addActor(const Actor &actor);
+		void registerActor(const Actor &actor);
+		
 };
 
 #endif
