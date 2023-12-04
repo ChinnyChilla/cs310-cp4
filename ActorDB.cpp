@@ -124,6 +124,21 @@ void ActorDB::show_praise() {
 	}
 	return;
 }
+void ActorDB::remove_actor(unsigned int actorid) {
+	int actorLocation = binarySearchActor(actorid, 0, actors->count-1);
+	if (actorLocation == -1) {
+		cout << "actor not found" << endl;
+		return;
+	}
+	Actor* actorToRemove = actors->at(actorLocation);
+	actors->remove(actorLocation);
+	if (!actorToRemove->already_praised) {
+		actorHeap.remove(actorToRemove);
+	}
+	actorBST.remove(actorToRemove);
+	return;
+
+}
  /*
 void ActorDB::showCareer(unsigned int actorid) const {
 	for (unsigned int i = 0; i < actors.size(); i++) {
