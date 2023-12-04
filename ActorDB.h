@@ -13,6 +13,7 @@ class ActorDB {
 		ActorHeap* actorHeap; 	
 	public:
 		ActorDB();
+		~ActorDB();
 		// bool find(unsigned int actorid) const;
 		// string getName(unsigned int actorid) const;
 		bool addActor(unsigned int actorid, string last, string first);

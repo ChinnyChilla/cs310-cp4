@@ -4,7 +4,9 @@ ActorBST::ActorBST() {
 	root = nullptr;
 };
 
-ActorBST::~ActorBST() {};
+ActorBST::~ActorBST() {
+	destoryAllNodes(root);
+};
 // insert a node into the BST sorted by last name
 void ActorBST::insert(Actor* actor) {
 	ActorNode* newNode = new ActorNode(actor);

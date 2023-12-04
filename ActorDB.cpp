@@ -9,7 +9,11 @@ ActorDB::ActorDB() {
 	actorHeap = new ActorHeap();
 
 }
-
+ActorDB::~ActorDB() {
+	delete actorHeap;
+	delete actors;
+	delete actorBST;
+}
 int ActorDB::binarySearchActor(int target, int left, int right)
 {
 	if (right == -1)
@@ -102,9 +106,7 @@ void ActorDB::praise_actor(string last, unsigned int points) {
 };
 
 void ActorDB::award_actor() {
-	cout << "before extract max" << endl;
 	Actor* actor = actorHeap->extractMax();
-	cout << "done" << endl;
 	if (actor == nullptr) {
 		cout << "No actors to award" << endl;
 		return;

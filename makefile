@@ -37,7 +37,7 @@ $(OBJ)/Actor.o: Actor.cpp Actor.h
 $(OBJ)/ActorHeap.o: ActorHeap.cpp ActorHeap.h Actor.h
 	$(CC) $(FLAGS) -c ActorHeap.cpp -o $@
 
-$(OBJ)/ActorBST.o: ActorBST.cpp ActorBST.h Actor.h
+$(OBJ)/ActorBST.o: ActorBST.cpp ActorBST.h ActorNode.h 
 	$(CC) $(FLAGS) -c ActorBST.cpp -o $@
 
 $(OBJ)/Array.o: Array.cpp Array.h

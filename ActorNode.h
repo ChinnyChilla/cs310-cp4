@@ -7,6 +7,9 @@ public:
 		this->left = nullptr;
 		this->right = nullptr;
 	};
+	~ActorNode() {
+		delete this->actor;
+	};
 	Actor* actor;
 	ActorNode* left;
 	ActorNode* right;
