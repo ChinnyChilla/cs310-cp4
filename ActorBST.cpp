@@ -5,7 +5,7 @@ ActorBST::ActorBST() {
 };
 
 ActorBST::~ActorBST() {
-	destoryAllNodes(root);
+	destroyAllNodes(root);
 };
 // insert a node into the BST sorted by last name
 void ActorBST::insert(Actor* actor) {
@@ -54,4 +54,43 @@ void ActorBST::print(ActorNode* curr) {
 		print(curr->right);
 	};
 	return;
+}
+
+void ActorBST::removeActor(Actor* actorToRemove) {
+    root = removeActorRec(root, actorToRemove);
+}
+
+//tranverse thge node and find node to remove
+ActorNode* ActorBST::removeActorRec(ActorNode* node, Actor* actorToRemove) {
+    if (node == nullptr) return nullptr;
+
+    if (actorToRemove->actor_id < node->actor->actor_id) {
+        node->left = removeActorRec(node->left, actorToRemove);
+    } else if (actorToRemove->actor_id > node->actor->actor_id) {
+        node->right = removeActorRec(node->right, actorToRemove);
+    } else {
+        if (node->left == nullptr) {
+            ActorNode* temp = node->right;
+            delete node;
+            return temp;
+        } else if (node->right == nullptr) {
+            ActorNode* temp = node->left;
+            delete node;
+            return temp;
+        }
+
+        ActorNode* temp = minValueNode(node->right);
+        node->actor = temp->actor; // Swap actor; assuming shallow copy is acceptable
+        node->right = removeActorRec(node->right, temp->actor);
+    }
+    return node;
+}
+
+// in case the node to be removed has two children, make the right min value node successor
+ActorNode* ActorBST::minValueNode(ActorNode* node) {
+    ActorNode* current = node;
+    while (current && current->left != nullptr) {
+        current = current->left;
+    }
+    return current;
 }
