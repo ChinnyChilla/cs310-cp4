@@ -8,7 +8,6 @@ public:
 		this->right = nullptr;
 	};
 	~ActorNode() {
-		delete this->actor;
 	};
 	Actor* actor;
 	ActorNode* left;

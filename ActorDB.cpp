@@ -11,8 +11,12 @@ ActorDB::ActorDB() {
 }
 ActorDB::~ActorDB() {
 	delete actorHeap;
-	delete actors;
 	delete actorBST;
+	for (unsigned int i=0; i<actors->count; i++) {
+		delete actors->at(i);
+	}
+	delete actors;
+	
 }
 int ActorDB::binarySearchActor(int target, int left, int right)
 {
@@ -78,6 +82,7 @@ bool ActorDB::addActor(unsigned int actorid, string last, string first) {
 	int location = binarySearchActor(actorid, 0, actors->count - 1);
 	if (location != -1) {
 		cout << "register_actor: Error actor id " << actorid << " already in use" << endl;
+		delete actor;
 		return false;
 	}
 	int insertLocation = findInsertLocationActor(actorid, 0 , actors->count - 1);
@@ -138,6 +143,7 @@ void ActorDB::remove_actor(unsigned int actorid) {
 		actorHeap->remove(actorToRemove);
 	}
 	actorBST->removeActor(actorToRemove);
+	delete actorToRemove;
 	return;
 
 }
