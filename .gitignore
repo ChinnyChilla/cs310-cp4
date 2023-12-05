@@ -1,0 +1,6 @@
+/tests
+/bin
+/obj
+.vscode/settings.json
+/.git
+output.txt
