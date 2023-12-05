@@ -23,6 +23,7 @@ class ActorDB {
 		int findInsertLocationActor(int target, int left, int right);
 		int binarySearchActor(int target, int left, int right);
 		void remove_actor(unsigned int actorid);
+		void remove_actor(string last);
 		// void remove_actor(string last);˜
 		//void showCareer(unsigned int actorid) const;
 };

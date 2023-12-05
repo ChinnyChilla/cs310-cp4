@@ -64,6 +64,10 @@ void do_show_praise() {
 	actordb.show_praise();
 	return;
 }
+void do_remove_actor(int actor_id) {
+	actordb.remove_actor(actor_id);
+	return;
+}
 
 // void do_join_cast(int actor_id, int movie_id) {
 // 	/*
@@ -221,6 +225,12 @@ bool accept_commands(istream &is, bool silent=false, bool echo=false) {
 	  else if (p.getOperation() == "show_praise")
 	  {
 		  do_show_praise();
+	  }
+	  else if (p.getOperation() == "remove_actor") {
+		  if (!assertInt(p, 1))
+			  continue;
+		  int actor_id = stoi(p.getArg(1));
+		  do_remove_actor(actor_id);
 	  }
 	//   else if (p.getOperation() == "join_cast") {
     //      if (!expected(p, 2))  

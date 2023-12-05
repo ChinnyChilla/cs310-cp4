@@ -1,0 +1,5 @@
+/tests
+/bin
+/obj
+.vscode/settings.json
+/.git

@@ -119,6 +119,7 @@ void ActorDB::award_actor() {
 }
 
 void ActorDB::show_praise() {
+	cout << "actor cout is " << actors->count << endl;
 	for (unsigned int i=0; i<actors->count; i++) {
 		cout << actors->at(i)->getID() << " " << actors->at(i)->getName() << " has " << actors->at(i)->praise_points << " praise points" << endl;
 	}
@@ -128,10 +129,11 @@ void ActorDB::show_praise() {
 void ActorDB::remove_actor(unsigned int actorid) {
 	int actorLocation = binarySearchActor(actorid, 0, actors->count-1);
 	if (actorLocation == -1) {
-		cout << "actor not found" << endl;
+		cout << "remove_actor: Actor not found" << endl;
 		return;
 	}
 	Actor* actorToRemove = actors->at(actorLocation);
+	cout << "Actor with name " << actorToRemove->first << " " << actorToRemove->last << " has been removed" << endl;
 	actors->remove(actorLocation);
 	if (!actorToRemove->already_praised) {
 		actorHeap->remove(actorToRemove);
@@ -139,6 +141,23 @@ void ActorDB::remove_actor(unsigned int actorid) {
 	actorBST->removeActor(actorToRemove);
 	return;
 
+}
+
+void ActorDB::remove_actor(string last) {
+
+	Actor* actorToRemove = actorBST->search(last);
+	if (actorToRemove == nullptr) {
+		cout << "remove_actor: Actor not found" << endl;
+		return;
+	}
+	cout << "remove_actor: Actor with name " << actorToRemove->first << " " << actorToRemove->last << " has been removed" << endl;
+	int actorLocation = binarySearchActor(actorToRemove->getID(), 0, actors->count-1);
+	actors->remove(actorLocation);
+	if (!actorToRemove->already_praised) {
+		actorHeap->remove(actorToRemove);
+	}
+	actorBST->removeActor(actorToRemove);
+	return;
 }
  /*
 void ActorDB::showCareer(unsigned int actorid) const {
