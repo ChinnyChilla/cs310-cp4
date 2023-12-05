@@ -16,7 +16,7 @@ void ActorBST::insert(Actor* actor) {
 	}
 	ActorNode* curr = root;
 	while (curr != nullptr) {
-		if (curr->actor->last > newNode->actor->last) {
+		if (curr->actor->last < newNode->actor->last) {
 			if (curr->left == nullptr) {
 				curr->left = newNode;
 				return;
@@ -63,9 +63,9 @@ void ActorBST::removeActor(Actor* actorToRemove) {
 //tranverse thge node and find node to remove
 ActorNode* ActorBST::removeActorRec(ActorNode* node, Actor* actorToRemove) {
     if (node == nullptr) return nullptr;
-    if (actorToRemove->last < node->actor->last) {
+    if (node->actor->last < actorToRemove->last) {
         node->left = removeActorRec(node->left, actorToRemove);
-    } else if (actorToRemove->last > node->actor->last) {
+    } else if (node->actor->last > actorToRemove->last) {
         node->right = removeActorRec(node->right, actorToRemove);
     } else {
         if (node->left == nullptr) {

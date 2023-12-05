@@ -1,0 +1,46 @@
+register_actor: Registered actor alpha alpha
+register_actor: Registered actor beta beta
+register_actor: Registered actor charlie charlie
+register_actor: Registered actor delta delta
+register_actor: Registered actor echo echo
+register_actor: Registered actor fart fart
+register_actor: Registered actor girl girl
+register_actor: Registered actor horse horse
+Awarding actor alpha alpha 100 praise points
+Awarding actor beta beta 150 praise points
+Awarding actor charlie charlie 47 praise points
+Awarding actor delta delta 1 praise points
+Awarding actor echo echo 20 praise points
+Awarding actor fart fart 7 praise points
+Awarding actor girl girl 8 praise points
+Awarding actor horse horse 10 praise points
+Awarding actor horse horse 11 praise points
+register_actor: Registered actor zed zed
+1 alpha alpha has 100 praise points
+2 beta beta has 150 praise points
+3 charlie charlie has 47 praise points
+4 delta delta has 1 praise points
+5 echo echo has 20 praise points
+6 fart fart has 7 praise points
+7 girl girl has 8 praise points
+8 horse horse has 21 praise points
+10 zed zed has 0 praise points
+Actor beta beta presented with the Lifetime Achievement Award (150 praise points)
+Actor alpha alpha presented with the Lifetime Achievement Award (100 praise points)
+Actor charlie charlie presented with the Lifetime Achievement Award (47 praise points)
+Actor horse horse presented with the Lifetime Achievement Award (21 praise points)
+Actor echo echo presented with the Lifetime Achievement Award (20 praise points)
+Actor girl girl presented with the Lifetime Achievement Award (8 praise points)
+Actor fart fart presented with the Lifetime Achievement Award (7 praise points)
+Actor delta delta presented with the Lifetime Achievement Award (1 praise points)
+Actor zed zed presented with the Lifetime Achievement Award (0 praise points)
+No actors to award
+1 alpha alpha has 100 praise points
+2 beta beta has 150 praise points
+3 charlie charlie has 47 praise points
+4 delta delta has 1 praise points
+5 echo echo has 20 praise points
+6 fart fart has 7 praise points
+7 girl girl has 8 praise points
+8 horse horse has 21 praise points
+10 zed zed has 0 praise points

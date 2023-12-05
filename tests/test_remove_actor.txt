@@ -1,0 +1,22 @@
+register_actor 1 alpha alpha
+register_actor 2 beta beta
+register_actor 3 charlie charlie
+register_actor 4 delta delta
+register_actor 5 echo echo
+register_actor 6 fart fart
+register_actor 7 girl girl
+register_actor 8 horse horse
+remove_actor 1
+praise_actor alpha 100
+praise_actor beta 10
+award_actor
+register_actor 1 apple apple
+praise_actor apple 1000
+award_actor
+show_praise
+remove_actor 2
+remove_actor 3
+remove_actor 8
+register_actor 10 zed zed
+show_praise
+quit

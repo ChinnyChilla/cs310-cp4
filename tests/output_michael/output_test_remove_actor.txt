@@ -1,0 +1,33 @@
+register_actor: Registered actor alpha alpha
+register_actor: Registered actor beta beta
+register_actor: Registered actor charlie charlie
+register_actor: Registered actor delta delta
+register_actor: Registered actor echo echo
+register_actor: Registered actor fart fart
+register_actor: Registered actor girl girl
+register_actor: Registered actor horse horse
+Actor with name alpha alpha has been removed
+Actor alpha not found
+Awarding actor beta beta 10 praise points
+Actor beta beta presented with the Lifetime Achievement Award (10 praise points)
+register_actor: Registered actor apple apple
+Awarding actor apple apple 1000 praise points
+Actor apple apple presented with the Lifetime Achievement Award (1000 praise points)
+1 apple apple has 1000 praise points
+2 beta beta has 10 praise points
+3 charlie charlie has 0 praise points
+4 delta delta has 0 praise points
+5 echo echo has 0 praise points
+6 fart fart has 0 praise points
+7 girl girl has 0 praise points
+8 horse horse has 0 praise points
+Actor with name beta beta has been removed
+Actor with name charlie charlie has been removed
+Actor with name horse horse has been removed
+register_actor: Registered actor zed zed
+1 apple apple has 1000 praise points
+4 delta delta has 0 praise points
+5 echo echo has 0 praise points
+6 fart fart has 0 praise points
+7 girl girl has 0 praise points
+10 zed zed has 0 praise points

@@ -1,0 +1,4 @@
+praise_actor 1 1000
+award_actor
+show_praise
+quit

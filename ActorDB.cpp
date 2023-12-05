@@ -116,7 +116,7 @@ void ActorDB::award_actor() {
 		cout << "No actors to award" << endl;
 		return;
 	}
-	cout << "Actor " << actor->first << " " << actor->last << " presnted with the Lifetime Achievement Award (" << actor->praise_points << " praise points)" << endl;
+	cout << "Actor " << actor->first << " " << actor->last << " presented with the Lifetime Achievement Award (" << actor->praise_points << " praise points)" << endl;
 	actor->already_praised = true;
 
 	
