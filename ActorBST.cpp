@@ -71,10 +71,12 @@ ActorNode* ActorBST::removeActorRec(ActorNode* node, Actor* actorToRemove) {
     } else {
         if (node->left == nullptr) {
             ActorNode* temp = node->right;
+	    delete node->actor;
             delete node;
             return temp;
         } else if (node->right == nullptr) {
             ActorNode* temp = node->left;
+	    delete node->actor;
             delete node;
             return temp;
         }
