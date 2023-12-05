@@ -5,15 +5,19 @@ public:
 	ActorNode* root;
 	ActorBST();
 	~ActorBST();
-	void destoryAllNodes(ActorNode* node) {
+	void removeActor(Actor* actorToRemove);
+    ActorNode* minValueNode(ActorNode* node);
+	void destroyAllNodes(ActorNode* node) {
 		if (node)
 		{
-			destoryAllNodes(node->left);
-			destoryAllNodes(node->right);
+			destroyAllNodes(node->left);
+			destroyAllNodes(node->right);
 		}
 		delete node;
 	};
 	void insert(Actor* node);
 	void print(ActorNode* node);
 	Actor* search(string name);
+	ActorNode* removeActorRec(ActorNode* node, Actor* actorToRemove);
+
 };

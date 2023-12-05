@@ -124,6 +124,7 @@ void ActorDB::show_praise() {
 	}
 	return;
 }
+
 void ActorDB::remove_actor(unsigned int actorid) {
 	int actorLocation = binarySearchActor(actorid, 0, actors->count-1);
 	if (actorLocation == -1) {
@@ -133,9 +134,9 @@ void ActorDB::remove_actor(unsigned int actorid) {
 	Actor* actorToRemove = actors->at(actorLocation);
 	actors->remove(actorLocation);
 	if (!actorToRemove->already_praised) {
-		actorHeap.remove(actorToRemove);
+		actorHeap->remove(actorToRemove);
 	}
-	actorBST.remove(actorToRemove);
+	actorBST->removeActor(actorToRemove);
 	return;
 
 }

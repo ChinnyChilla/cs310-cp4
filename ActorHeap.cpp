@@ -1,4 +1,5 @@
 #include "ActorHeap.h"
+#include <climits>
 
 ActorHeap::ActorHeap()
 {
@@ -96,4 +97,28 @@ void ActorHeap::mergeDown(unsigned int index) {
 void ActorHeap::fixHeap(unsigned int index) {
 	mergeUp(index);
 	return;
+}
+
+void ActorHeap::remove(Actor* actor) {
+    unsigned int index = UINT_MAX;  
+    for (unsigned int i = 0; i < count; i++) {
+        if (arr[i]->actor_id == actor->actor_id) {
+            index = i;
+            break;
+        }
+    }
+
+    if (index == UINT_MAX) return; // Actor not found
+
+    swap(index, count - 1);
+    count--;
+
+    if (index < count) {
+        // Check if the swapped item should move up or down
+        if (index > 0 && arr[index]->praise_points > arr[(index - 1) / 2]->praise_points) {
+            mergeUp(index);
+        } else {
+            mergeDown(index);
+        }
+    }
 }
