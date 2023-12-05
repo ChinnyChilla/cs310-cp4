@@ -119,7 +119,6 @@ void ActorDB::award_actor() {
 }
 
 void ActorDB::show_praise() {
-	cout << "actor cout is " << actors->count << endl;
 	for (unsigned int i=0; i<actors->count; i++) {
 		cout << actors->at(i)->getID() << " " << actors->at(i)->getName() << " has " << actors->at(i)->praise_points << " praise points" << endl;
 	}

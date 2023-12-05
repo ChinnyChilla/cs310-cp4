@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Specify the number of lines you want to generate
-lines=1000000
+lines=10000
 
 # Specify the output file
 output_file="./tests/test_register_actor.txt"
@@ -31,9 +31,9 @@ do
   n=$(( n + 1 ))
 done
 
-n=$(expr $lines / 2)
+n=1
 praise_points=1
-while [ $n -le $lines ]
+while [ $n -le $(expr $lines / 2) ]
 do
   echo "praise_actor $n $praise_points" >> $output_file
   n=$(( n + 2 ))
@@ -46,6 +46,6 @@ do
   n=$(( n + 2 ))
 done
 
-echo "show_actor" >> $output_file
+echo "show_praise" >> $output_file
 
 echo "Script execution completed. The output has been written to $output_file."
