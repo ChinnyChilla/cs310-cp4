@@ -3,9 +3,6 @@
 
 #include <iostream>
 using namespace std;
-#include <vector>
-
-//#include "MovieDB.h"
 
 class Actor {
 	public:

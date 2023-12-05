@@ -158,7 +158,7 @@ void ActorDB::remove_actor(string last) {
 	actorBST->removeActor(actorToRemove);
 	return;
 }
- /*
+/*
 void ActorDB::showCareer(unsigned int actorid) const {
 	for (unsigned int i = 0; i < actors.size(); i++) {
 		if (actors[i].getID() == actorid) {
@@ -172,3 +172,4 @@ void ActorDB::showCareer(unsigned int actorid) const {
 		cout << "actor id " << actorid << " not found" << endl;
 }
 */
+
