@@ -155,7 +155,7 @@ bool accept_commands(istream &is, bool silent=false, bool echo=false) {
 	   // "   cast <movieid>" << endl <<
        "   remove_actor <actorid>" << endl <<
        "   praise_actor <last-name> <praise-points>" << endl <<
-       "   award_actor <last-name>" << endl <<
+       "   award_actor" << endl <<
        "   show_priase" << endl <<
 	    // "   career <actorid>" << endl << 
             "   quit" << endl; 
