@@ -3,3 +3,5 @@
 .vscode/settings.json
 /.git
 output.txt
+/tests
+test.sh
