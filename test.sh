@@ -13,6 +13,8 @@ output_file="./tests/test_from_script.txt"
 output_directory="./tests/tests_output"
 original_directory="./tests/output_michael"
 
+test_with_valgrind=1
+
 # Initialize n
 n=1
 
@@ -66,10 +68,21 @@ make clean
 make
 
 echo "Testing test cases"
-valgrind --leak-check=full -s ./bin/actor_db < ./tests/test_from_script.txt > $output_directory/output_test_from_script.txt
-valgrind --leak-check=full -s ./bin/actor_db < ./tests/test_award_actor_extra.txt > $output_directory/output_test_award_actor_extra.txt
-valgrind --leak-check=full -s ./bin/actor_db < ./tests/test_empty.txt > $output_directory/output_test_empty.txt
-valgrind --leak-check=full -s ./bin/actor_db < ./tests/test_remove_actor.txt > $output_directory/output_test_remove_actor.txt
+if [ $test_with_valgrind -eq 1 ]
+then
+  	echo "testing with valgrind"
+  	valgrind --leak-check=full -s ./bin/actor_db < ./tests/test_from_script.txt > $output_directory/output_test_from_script.txt
+	valgrind --leak-check=full -s ./bin/actor_db < ./tests/test_award_actor_extra.txt > $output_directory/output_test_award_actor_extra.txt
+	valgrind --leak-check=full -s ./bin/actor_db < ./tests/test_empty.txt > $output_directory/output_test_empty.txt
+	valgrind --leak-check=full -s ./bin/actor_db < ./tests/test_remove_actor.txt > $output_directory/output_test_remove_actor.txt
+else
+	echo "testing without valgrind"
+	./bin/actor_db < ./tests/test_from_script.txt > $output_directory/output_test_from_script.txt
+	./bin/actor_db < ./tests/test_award_actor_extra.txt > $output_directory/output_test_award_actor_extra.txt
+	./bin/actor_db < ./tests/test_empty.txt > $output_directory/output_test_empty.txt
+	./bin/actor_db < ./tests/test_remove_actor.txt > $output_directory/output_test_remove_actor.txt
+fi
+
 
 echo "testing complete; comparing answers from $original_directory"
 
